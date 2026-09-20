@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gaming Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            🎮 <span>Gaming</span>Hub
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#sensitivity">Sensitivity</a>
+            <a href="#stats">Stats</a>
+            <a href="#games">Games</a>
+            <a href="#fps">FPS Test</a>
+        </nav>
+
+        <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="badge">⚡ GAMING PERFORMANCE CENTER</p>
+
+            <h1>
+                LEVEL UP<br>
+                YOUR <span>GAME.</span>
+            </h1>
+
+            <p class="hero-text">
+                Your personal gaming dashboard for sensitivity,
+                stats, games, timers and FPS testing.
+            </p>
+
+            <button class="main-btn" onclick="startGaming()">
+                🎮 START GAMING
+            </button>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="status">
+                <span class="dot"></span>
+                SYSTEM READY
+            </div>
+
+            <div class="controller">
+                🎮
+            </div>
+
+            <h2>GAMING HUB</h2>
+
+            <p>YOUR PERFORMANCE. YOUR RULES.</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOOLS -->
+    <section class="section" id="sensitivity">
+
+        <div class="section-title">
+            <p>TOOLS</p>
+            <h2>Gaming <span>Utilities</span></h2>
+        </div>
+
+
+        <div class="tools-grid">
+
+            <!-- SENSITIVITY -->
+            <div class="tool-card">
+
+                <div class="tool-icon">🎯</div>
+
+                <h3>Free Fire Sensitivity</h3>
+
+                <p>
+                    Calculate a comfortable sensitivity
+                    based on your current setting.
+                </p>
+
+                <input
+                    type="number"
+                    id="ffSensitivity"
+                    placeholder="Enter sensitivity"
+                    min="1"
+                    max="200"
+                >
+
+                <button onclick="calculateSensitivity()">
+                    Calculate
+                </button>
+
+                <div id="sensitivityResult" class="result">
+                    Result will appear here
+                </div>
+
+            </div>
+
+
+            <!-- DPI -->
+            <div class="tool-card">
+
+                <div class="tool-icon">🖱️</div>
+
+                <h3>DPI / eDPI Calculator</h3>
+
+                <p>
+                    Calculate your effective DPI using
+                    mouse DPI and sensitivity.
+                </p>
+
+                <input
+                    type="number"
+                    id="dpi"
+                    placeholder="Mouse DPI"
+                    min="1"
+                >
+
+                <input
+                    type="number"
+                    id="mouseSensitivity"
+                    placeholder="Sensitivity"
+                    min="0.01"
+                    step="0.01"
+                >
+
+                <button onclick="calculateDPI()">
+                    Calculate eDPI
+                </button>
+
+                <div id="dpiResult" class="result">
+                    Result will appear here
+                </div>
+
+            </div>
+
+
+            <!-- TIMER -->
+            <div class="tool-card">
+
+                <div class="tool-icon">⏱️</div>
+
+                <h3>Gaming Timer</h3>
+
+                <p>
+                    Track how long you have been gaming.
+                </p>
+
+                <div id="timer" class="timer">
+                    00:00:00
+                </div>
+
+                <div class="timer-buttons">
+
+                    <button onclick="startTimer()">
+                        ▶ Start
+                    </button>
+
+                    <button onclick="pauseTimer()">
+                        ⏸ Pause
+                    </button>
+
+                    <button onclick="resetTimer()">
+                        ↻ Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FPS -->
+            <div class="tool-card" id="fps">
+
+                <div class="tool-icon">⚡</div>
+
+                <h3>Real Browser FPS</h3>
+
+                <p>
+                    Measure the actual rendering FPS
+                    of your browser.
+                </p>
+
+                <div id="fpsValue" class="fps-value">
+                    -- FPS
+                </div>
+
+                <button onclick="startFPS()">
+                    Start FPS Test
+                </button>
+
+                <div id="fpsStatus" class="result">
+                    Test not started
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section class="section" id="stats">
+
+        <div class="section-title">
+            <p>YOUR PERFORMANCE</p>
+            <h2>Gaming <span>Stats</span></h2>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <span>🎮</span>
+                <h3 id="gamesPlayed">0</h3>
+                <p>Games Played</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🏆</span>
+                <h3 id="wins">0</h3>
+                <p>Wins</p>
+            </div>
+
+            <div class="stat-card">
+                <span>💀</span>
+                <h3 id="kills">0</h3>
+                <p>Kills</p>
+            </div>
+
+            <div class="stat-card">
+                <span>📈</span>
+                <h3 id="kd">0.00</h3>
+                <p>K/D Ratio</p>
+            </div>
+
+        </div>
+
+
+        <div class="stats-input">
+
+            <input
+                type="number"
+                id="statGames"
+                placeholder="Games"
+                min="0"
+            >
+
+            <input
+                type="number"
+                id="statWins"
+                placeholder="Wins"
+                min="0"
+            >
+
+            <input
+                type="number"
+                id="statKills"
+                placeholder="Kills"
+                min="0"
+            >
+
+            <input
+                type="number"
+                id="statDeaths"
+                placeholder="Deaths"
+                min="0"
+            >
+
+            <button onclick="updateStats()">
+                Update Stats
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- GAME LIBRARY -->
+    <section class="section" id="games">
+
+        <div class="section-title">
+            <p>YOUR COLLECTION</p>
+            <h2>Game <span>Library</span></h2>
+        </div>
+
+        <div id="gameList" class="game-grid">
+            <!-- Games will load from games.js -->
+        </div>
+
+        <div class="add-game">
+
+            <input
+                type="text"
+                id="newGame"
+                placeholder="Enter game name"
+            >
+
+            <button onclick="addGame()">
+                + Add Game
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <h2>READY TO LEVEL UP?</h2>
+
+        <p>
+            Track your performance and improve your gaming experience.
+        </p>
+
+        <button onclick="startGaming()">
+            🚀 LET'S GO
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+    <div class="logo">
+        🎮 GamingHub
+    </div>
+
+    <p>
+        Built for gamers.
+    </p>
+
+    <p>
+        © 2026 Gaming Hub
+    </p>
+
+    <p class="created-by">
+        Created by <span>Pranay</span> ❤️
+    </p>
+
+</footer>
+<script src="games.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
